@@ -1,0 +1,59 @@
+img {
+  max-height: 31vw;
+  border-radius: 1.3rem;
+}
+.items {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: arial;
+  padding: 1rem;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.3rem;
+  justify-content: center;
+}
+input[type="file"] {
+  display: none;
+}
+.label {
+  border: none;
+  background-color: red;
+  padding: 5px 15px;
+  border-radius: 15px;
+  color: white;
+  font-family: arial;
+}
+input {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px 10px;
+  outline: none;
+}
+label {
+  margin: 10px;
+}
+.form div {
+  font-family: arial;
+}
+.search {
+  text-align: center;
+}
+button {
+  border-radius: 15px;
+  padding: 5px 15px;
+  background-color: green;
+  color: white;
+  border: none;
+}
+button:hover {
+  background-color: darkgreen;
+  cursor: pointer;
+}
+.label:hover {
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-<div class="form">
+<!-- <div class="form">
   <div>
     <label for="name">Title</label>
     <input type="text" id="name" [(ngModel)]="title" />
@@ -8,17 +8,23 @@
   <label for="img" class="label">Upload Image</label>
   <input type="file" id="img" (click)="onFile($event)" />
   <button type="button" (click)="onClick()">add item</button>
-</div>
+</div> -->
 <div class="search">
-  <input type="text"><button>Search</button>
+  <input type="text" [(ngModel)]="search" /><button (click)="onSearch()">Search</button>
 </div>
 
 <div class="items">
-  @for (item of itemsArray; track item.id) {
+  @if (search==='') { @for (item of itemsArray; track item.id) {
   <div>
-    <img src="{{ item.img }}" alt="" />
+    <img [src]="item.img" alt="" />
     <h3>{{ item.name }}</h3>
     <h4>Description: {{ item.description }}</h4>
   </div>
-  }
+  } }@else {@for (item of newItems; track item.id) {
+    <div>
+      <img [src]="item.img" alt="" />
+      <h3>{{ item.name }}</h3>
+      <h4>Description: {{ item.description }}</h4>
+    </div>
+    } }
 </div>
