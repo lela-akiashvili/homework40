@@ -70,23 +70,22 @@ export class AppComponent {
     }
   }
   onClick() {
-    if(this.title===''||this.desc===''||this.imgUrl===''){
-      alert('fill in all fildes and ulpoad image to continue')
-    }else{
-       const newitem: Item = {
-      name: this.title,
-      description: this.desc,
-      id: this.id++,
-      img: this.imgUrl,
-    };
-    this.itemsArray.push(newitem);
-    console.log(this.itemsArray);
-    console.log(this.imgUrl);
-    this.title='';
-    this.desc='';
-    this.imgUrl='';
+    if (this.title === '' || this.desc === '' || this.imgUrl === '') {
+      alert('Fill in All Fields and Upload Image to Continue');
+    } else {
+      const newitem: Item = {
+        name: this.title,
+        description: this.desc,
+        id: this.id++,
+        img: this.imgUrl,
+      };
+      this.itemsArray.push(newitem);
+      console.log(this.itemsArray);
+      console.log(this.imgUrl);
+      this.title = '';
+      this.desc = '';
+      this.imgUrl = '';
     }
-   
   }
   onSearch() {
     this.newItems = this.itemsArray.filter(
