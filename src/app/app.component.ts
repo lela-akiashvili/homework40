@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 export interface Item {
   name: string;
@@ -14,11 +14,11 @@ export interface Item {
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  search = '';
   title = '';
   desc = '';
-  id: number = 8;
-  image: string = '';
-  search = '';
+  id = 7;
+  imgUrl: string = '';
   itemsArray: Item[] = [
     {
       name: "Scum-Villain's Self-Saving System",
@@ -44,41 +44,57 @@ export class AppComponent {
       description: 'Manga',
       id: 6,
     },
-    { name: 'Shingeki no kyojin', img: 'https://comicvine.gamespot.com/a/uploads/scale_small/6/67663/7788898-33.jpg', description: 'Manga', id: 7 },
+    {
+      name: 'Shingeki no kyojin',
+      img: 'https://comicvine.gamespot.com/a/uploads/scale_small/6/67663/7788898-33.jpg',
+      description: 'Manga',
+      id: 7,
+    },
     {
       name: 'Kuroshitsuji',
       img: 'https://img.spoilerhat.com/img/?url=https://zjcdn.mangafox.me/store/manga/2746/TBD-202.0/compressed/c002.jpg',
-      description: 'book',
+      description: 'Manga',
       id: 7,
     },
   ];
   newItems: Item[] = [];
-  // onFile(event: any) {
-  //   const selectedFile: File = event.target.files[0];
-  //   if (selectedFile) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       this.image = reader.result as string;
-  //     };
-  //     reader.readAsDataURL(selectedFile);
-  //   }
-  // }
-  // onClick() {
-  //   const newItem: Item = {
-  //     name: this.title,
-  //     description: this.desc,
-  //     img: this.image,
-  //     id: this.id++,
-  //   };
-  //   this.itemsArray.push(newItem);
-  //   console.log(this.itemsArray);
-  // }
+
+  onFile(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imgUrl = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  onClick() {
+    if(this.title===''||this.desc===''||this.imgUrl===''){
+      alert('fill in all fildes and ulpoad image to continue')
+    }else{
+       const newitem: Item = {
+      name: this.title,
+      description: this.desc,
+      id: this.id++,
+      img: this.imgUrl,
+    };
+    this.itemsArray.push(newitem);
+    console.log(this.itemsArray);
+    console.log(this.imgUrl);
+    this.title='';
+    this.desc='';
+    this.imgUrl='';
+    }
+   
+  }
   onSearch() {
     this.newItems = this.itemsArray.filter(
       (item) =>
         item.name.toLocaleLowerCase().includes(this.search) ||
         item.description.toLocaleLowerCase().includes(this.search)
-    );console.log(this.newItems);
+    );
+    console.log(this.newItems);
     return this.newItems;
   }
 }
